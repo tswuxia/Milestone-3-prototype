@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <title>A-mazing</title>
+        <link rel="stylesheet" href="/stylesheets/manageShop.css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                <li><a href="/">Homepage</a></li>
+                <li><a href="/userAccount/personal_account"><%= username %></a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="/users/logout">Log Out</a></li>
+            </ul>
+            <br>
+            <button id="search">Search</button><input id="searchBar">
+            <%if(profile==null){%>
+                <img src="/images/usericon.png" id="profile">
+                <div id="info"><p id="name"><%=username%></p>
+                    
+                    <img src="/images/tele.png" id="tel">
+                    <span id="number">N.A.</span>
+                    <span id="edit"><a href="/userAccount/edit_profile">Edit Profile</a></span>
+                </div>
+                
+                <%}else{%>
+                    <img src="/images/upload_images/<%=profile.profilePic%>" id="profile">
+                    <div id="info"><p id="name"><%=username%></p> 
+                        <img src="/images/tele.png" id="tel">
+                        <span id="number"><% if (profile.profileNum) {%><%=profile.profileNum%><%} else {%>N.A.<%}%></span>
+                        <span id="edit"><a href="/userAccount/edit_profile">Edit Profile</a></span>
+                    </div>
+                <%}%>
+            <table id="personalNav"><tr>
+                <td><a href="/userAccount/personal_account">Favourites</a></td>
+                <td><a href="/userAccount/My_orders">My Orders</a></td>
+                <td>Manage My Shop</td>
+            </tr></table>
+            <table id="cart">
+                <% for (i = 0; i < rows.length; i++) { %>
+                    
+                    <tr>
+                        <td id="editicon"><a href="/userAccount/update?id=<%=productID=rows[i].productID%>"><img src="/images/editicon.png"></a></td>
+                        <td><a href="/product_info?id=<%=rows[i].productID%>"><img src="/images/upload_images/<%= rows[i].picPath %>"></a></td>
+                        <td class="des"><a href="/product_info?id=<%=rows[i].productID%>"><%= rows[i].productName %></a></td>
+                        <td class="cat"><%= rows[i].category %></td>
+                        <td class="price">
+                            <% if (rows[i].productPrice!=null&&rows[i].exchange!=null) { %>
+                                S$<%= rows[i].productPrice %><br>
+                                OR&nbsp;<br><%= rows[i].exchange %>
+                            <%} else if(rows[i].productPrice!=null) {%>
+                                S$<%= rows[i].productPrice %>
+                            <%}else{%>
+                                <%= rows[i].exchange %>
+                            <%}%>
+                        </td></tr>
+                <% }%>        
+            </table>
+            <a href="/userAccount/uploadinfo"><button id="upload" class="btn">Upload</button></a>
+            <a href="/userAccount/delete"><button id="delete" class="btn">Delete</button></a>
+        </div>
+    </body>
+</html>

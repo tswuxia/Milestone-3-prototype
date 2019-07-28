@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A-mazing</title>
+        <link rel='stylesheet' href='/stylesheets/profile_info.css'>
+        <script type="text/javascript">
+            function onlyThreeCheckBox() {
+			var checkboxgroup = document.getElementById('checkboxs').getElementsByTagName("input");
+			var limit = 3;
+			for (var i = 0; i < checkboxgroup.length; i++) {
+				checkboxgroup[i].onclick = function() {
+					var checkedcount = 0;
+						for (var i = 0; i < checkboxgroup.length; i++) {
+						checkedcount += (checkboxgroup[i].checked) ? 1 : 0;
+					}
+					if (checkedcount > limit) {
+						console.log("You can select maximum of " + limit + " checkbox.");
+						alert("You can select maximum of " + limit + " checkbox.");
+						this.checked = false;
+					}
+				}
+			}
+		}
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                <li><a href="/">Homepage</a></li>
+                <li><a href="/userAccount/personal_account"><%= username %></a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="/users/logout">Log Out</a></li>
+            </ul>
+            <br>
+            <p id="title">Edit Profile</p>
+            <form id="productinfo" method="post" enctype="multipart/form-data">
+                <p class="default">Profile Picture<br/><input type="file" name="pic" class="uploadpic" placeholder="please upload a picture"/></p>
+                <p class="default">Contact Number<input class="defaultinput" type="text" name="phone" id="price" placeholder="Your valid contact number"/></p>
+                <p class="default">Your Academic Level     
+                    <select class="defaultinput"name="cat" id="category">   
+                        <option value="psle">PSLE</option>   
+                        <option value="Sec">Secondary School</option>   
+                        <option value="jc">GCE A'levels</option>   
+                        <option value="ib">IB</option>   
+                        <option value="uni">University</option>
+                        <option value="other">Others</option>
+                    </select>
+                </p>
+                <p>                    
+                    <div id=checkboxes>
+                        <p>Choose interested tags(maximum 3)</p>
+                        <table>
+                            <tr>
+                                <td>Science<input type="checkbox" name="chk"  value="science"/></td>
+                                <td>Arts<input type="checkbox" name="chk"  value="arts"/></td>
+                                <td>Mathematics<input type="checkbox" name="chk"  value="math"/></td>
+                                <td>English<input type="checkbox" name="chk"  value="english"/></td>
+                            </tr>
+                            <tr>
+                                <td>Physics<input type="checkbox" name="chk"  value="physics"/></td>
+                                <td>Chemistry<input type="checkbox" name="chk"  value="chemistry"/></td>
+                                <td>Chinese<input type="checkbox" name="chk"  value="chinese"/></td>
+                                <td>Malay<input type="checkbox" name="chk"  value="malay"/></td>
+                            </tr>
+                            <tr>
+                                <td>Economis<input type="checkbox" name="chk"  value="econ"/></td>
+                                <td>NUS<input type="checkbox" name="chk"  value="nus"/></td>
+                                <td>NTU<input type="checkbox" name="chk"  value="ntu"/></td>
+                                <td>SUTD<input type="checkbox" name="chk"  value="sutd"/></td>
+                            </tr>
+                            <tr>
+                                <td>SMU<input type="checkbox" name="chk"  value="smu"/></td>                                
+                            </tr>
+                        </table>                       
+                    </div>
+                   
+                    <script type="text/javascript">onlyThreeCheckBox()</script>
+                </p>
+                
+                <button type="submit" id="submit">Submit</button>
+            </form>
+            
+    </body>
+</html>

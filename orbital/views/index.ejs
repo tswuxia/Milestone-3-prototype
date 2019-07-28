@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A-mazing</title>
+        <link rel='stylesheet' href='/stylesheets/normalize.css' />
+        <link rel='stylesheet' href='/stylesheets/index.css' />
+    </head>
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                <% if (search!=null){ %><li><a href='/'>Homepage</a></li><%}%>
+                <% if (!isAuthenticated) { %>
+                <li><a href="/users/sign_up">Sign Up</a></li>
+                <li><a href="/users/login">Log In</a></li>
+                <% } %>
+                <% if (isAuthenticated) { %>
+                <li><a href="/userAccount/personal_account"><%=username%></a></li>
+                <% } %>
+                <li><a href="/contactUs">Contact Us</a></li>
+                <% if (isAuthenticated) { %>
+                <li><a href="/users/logout">Log Out</a></li>
+                <% } %>
+            </ul>
+            <br>
+            <form method="get"><a href='/'><button id="search">Search</button></a><input name="searchcontent" id="searchBar" required></form>
+            <% if(search==null){%>
+            <ul id="categoryNav">
+                <li id="thisTab"><a href="/">HOME</a></li>
+                <li><a href="/results?key=psle">PSLE</a></li>
+                <li><a href="/results?key=sec">SECONDARY</li></a>
+                <li><a href="/results?key=jc">GCE-A LEVEL</li></a>
+                <li><a href="/results?key=ib">IB</li></a>
+                <li><a href="/results?key=uni">UNIVERSITY</a></li>
+                <li><a href="/results?key=other">OTHERS</a></li>
+            </ul>
+            <%}%>
+
+            <div id = "specialOffer">
+            <h3>
+                <% if(search==null){ %>
+                    New Updates
+                <% } else { %>
+                    Search Results
+                <% } %>
+            </h3><br>
+            <% if(search==null){ %>
+            <table id="product">
+                    <% for (i = 0; i <= product.length; i+=4) { %>
+                        <tr>
+                            <td>
+                                    <% if(product[product.length-1-i]!=undefined){%>
+                                        <ul id='productinfo'>
+                                            <li><a name='productID' href="/product_info?id=<%= product[product.length-1-i].productID %>"><img src="/images/upload_images/<%= product[product.length-1-i].picPath %>"></a></li>
+                                            <ul id='productinfo_words'>
+                                                <li id="productname"><%= product[product.length-1-i].productName %></li>
+                                                <li id="productprice">
+                                                <% if (product[product.length-1-i].productPrice) { %>
+                                                    S$<%= product[product.length-1-i].productPrice %>
+                                                <%} else {%>
+                                                    <%= product[product.length-1-i].exchange %>
+                                                <%}%></li>
+                                            </ul>
+                                        </ul>
+                                    <% }%>
+                            </td>
+                            <td>
+                                    <% if(product[product.length-1-i-1]!=undefined){%>
+                                        <ul id=productinfo>
+                                            <li><a href="/product_info?id=<%= product[product.length-1-i-1].productID %>"><img src="/images/upload_images/<%= product[product.length-1-i-1].picPath %>"></a></li>
+                                            <ul id='productinfo_words'>
+                                                <li id="productname"><%= product[product.length-1-i-1].productName %></li>
+                                                <li id="productprice"><% if (product[product.length-1-i-1].productPrice) { %>
+                                                    S$<%= product[product.length-1-i-1].productPrice %>
+                                                <%} else {%>
+                                                    <%= product[product.length-1-i-1].exchange %>
+                                                <%}%></li>
+                                            </ul>
+                                        </ul>
+                                    <% }%>
+                            </td>
+                            <td>
+                                    <% if(product[product.length-1-i-2]!=undefined){%>
+                                        <ul id=productinfo>
+                                            <li><a href="/product_info?id=<%= product[product.length-1-i-2].productID %>"><img src="/images/upload_images/<%= product[product.length-1-i-2].picPath %>"></a></li>
+                                            <ul id='productinfo_words'>
+                                                <li id="productname"><%= product[product.length-1-i-2].productName %></li>
+                                                <li id="productprice"><% if (product[product.length-1-i-2].productPrice) { %>
+                                                    S$<%= product[product.length-1-i-2].productPrice %>
+                                                <%} else {%>
+                                                    <%= product[product.length-1-i-2].exchange %>
+                                                <%}%></li>
+                                            </ul>
+                                        </ul>
+                                    <% }%>
+                            </td>
+                            <td>
+                                    <% if(product[product.length-1-i-3]!=undefined){%>
+                                        <ul id=productinfo>
+                                            <li><a href="/product_info?id=<%= product[product.length-1-i-3].productID %>"><img src="/images/upload_images/<%= product[product.length-1-i-3].picPath %>"></a></li>
+                                            <ul id='productinfo_words'>
+                                                <li id="productname"><%= product[product.length-1-i-3].productName %></li>
+                                                <li id="productprice"><% if (product[product.length-1-i-3].productPrice) { %>
+                                                    S$<%= product[product.length-1-i-3].productPrice %>
+                                                <%} else {%>
+                                                    <%= product[product.length-1-i-3].exchange %>
+                                                <%}%></li>
+                                            </ul>
+                                        </ul>
+                                    <% }%>
+                            </td>
+                        </tr>
+                    <% }%> 
+            </table>
+            <% }else{ %>
+                <table id="product">
+                    <% for (i = 0; i <= product.length; i+=4) { %>
+                        <tr>
+                            <td>
+                                <% if(product[product.length-1-i]!=undefined){%>
+                                    <ul id='productinfo'>
+                                        <li><a name='productID' href="/product_info?id=<%= product[product.length-1-i].productID %>"><img src="/images/upload_images/<%= product[product.length-1-i].picPath %>"></a></li>
+                                        <ul id='productinfo_words'>
+                                            <li id="productname"><%= product[product.length-1-i].productName %></li>
+                                            <li id="productprice"><% if (product[product.length-1-i].productPrice) { %>
+                                                S$<%= product[product.length-1-i].productPrice %>
+                                            <%} else {%>
+                                                <%= product[product.length-1-i].exchange %>
+                                            <%}%></li>
+                                        </ul>
+                                    </ul>
+                                <% }%>
+                            </td>
+                            <td>
+                                <% if(product[product.length-1-i-1]!=undefined){%>
+                                    <ul id=productinfo>
+                                        <li><a href="/product_info?id=<%= product[product.length-1-i-1].productID %>"><img src="/images/upload_images/<%= product[product.length-1-i-1].picPath %>"></a></li>
+                                        <ul id='productinfo_words'>
+                                            <li id="productname"><%= product[product.length-1-i-1].productName %></li>
+                                            <li id="productprice"><% if (product[product.length-1-i-1].productPrice) { %>
+                                                S$<%= product[product.length-1-i-1].productPrice %>
+                                            <%} else {%>
+                                                <%= product[product.length-1-i-1].exchange %>
+                                            <%}%></li>
+                                        </ul>
+                                    </ul>
+                                <% }%>
+                            </td>
+                            <td>
+                                <% if(product[product.length-1-i-2]!=undefined){%>
+                                    <ul id=productinfo>
+                                        <li><a href="/product_info?id=<%= product[product.length-1-i-2].productID %>"><img src="/images/upload_images/<%= product[product.length-1-i-2].picPath %>"></a></li>
+                                        <ul id='productinfo_words'>
+                                            <li id="productname"><%= product[product.length-1-i-2].productName %></li>
+                                            <li id="productprice"><% if (product[product.length-1-i-2].productPrice) { %>
+                                                S$<%= product[product.length-1-i-2].productPrice %>
+                                            <%} else {%>
+                                                <%= product[product.length-1-i-2].exchange %>
+                                            <%}%></li>
+                                        </ul>
+                                    </ul>
+                                <% }%>
+                            </td>
+                            <td>
+                                <% if(product[product.length-1-i-3]!=undefined){%>
+                                    <ul id=productinfo>
+                                        <li><a href="/product_info?id=<%= product[product.length-1-i-3].productID %>"><img src="/images/upload_images/<%= product[product.length-1-i-3].picPath %>"></a></li>
+                                        <ul id='productinfo_words'>
+                                            <li id="productname"><%= product[product.length-1-i-3].productName %></li>
+                                            <li id="productprice"><% if (product[product.length-1-i-3].productPrice) { %>
+                                                S$<%= product[product.length-1-i-3].productPrice %>
+                                            <%} else {%>
+                                                <%= product[product.length-1-i-3].exchange %>
+                                            <%}%></li>
+                                        </ul>
+                                    </ul>
+                                <% }%>
+                            </td>
+                        </tr>
+                    <% }%> 
+                </table>
+            <% } %>
+            <% if(search==null){ %>   
+            <div id = "highlyRated">
+                <h3>You might be interested in:</h3><br>
+                <% if (isAuthenticated){ %>
+                    <%if(notice){%>
+                        <p id = notice><%=notice%><a href="/userAccount/edit_profile" id="editLink">HERE</a><br></p>
+                    <%}else{%>
+                    <table id="product">
+                      
+                    <% for (i = 0; i <= rec.length; i+=4) { %>
+                        <tr>
+                            <td>
+                                    <% if(rec[rec.length-1-i]!=undefined){%>
+                                        <ul id='productinfo'>
+                                            <li><a name='productID' href="/product_info?id=<%= rec[rec.length-1-i].productID %>"><img src="/images/upload_images/<%= rec[rec.length-1-i].picPath %>"></a></li>
+                                            <ul id='productinfo_words'>
+                                                <li id="productname"><%= rec[rec.length-1-i].productName %></li>
+                                                <li id="productprice"><%= rec[rec.length-1-i].productPrice %></li>
+                                            </ul>
+                                        </ul>
+                                    <% }%>
+                            </td>
+                            <td>
+                                <% if(rec[rec.length-1-i-1]!=undefined){%>
+                                    <ul id=productinfo>
+                                        <li><a href="/product_info?id=<%= rec[rec.length-1-i-1].productID %>"><img src="/images/upload_images/<%= rec[rec.length-1-i-1].picPath %>"></a></li>
+                                        <ul id='productinfo_words'>
+                                            <li id="productname"><%= rec[rec.length-1-i-1].productName %></li>
+                                            <li id="productprice"><%= rec[rec.length-1-i-1].productPrice %></li>
+                                        </ul>
+                                    </ul>
+                                <% }%>
+                            </td>
+                            <td>
+                                <% if (rec[rec.length-1-i-2]!=undefined){%>
+                                    <ul id=productinfo>
+                                        <li><a href="/product_info?id=<%= rec[rec.length-1-i-2].productID %>"><img src="/images/upload_images/<%= rec[rec.length-1-i-2].picPath %>"></a></li>
+                                        <ul id='productinfo_words'>
+                                            <li id="productname"><%= rec[rec.length-1-i-2].productName %></li>
+                                            <li id="productprice"><%= rec[rec.length-1-i-2].productPrice %></li>
+                                        </ul>
+                                    </ul>
+                                <% }%>
+                            </td>
+                            <td>
+                                <% if(rec[rec.length-1-i-3]!=undefined){%>
+                                    <ul id=productinfo>
+                                        <li><a href="/product_info?id=<%= rec[rec.length-1-i-3].productID %>"><img src="/images/upload_images/<%= rec[rec.length-1-i-3].picPath %>"></a></li>
+                                        <ul id='productinfo_words'>
+                                            <li id="productname"><%= rec[rec.length-1-i-3].productName %></li>
+                                            <li id="productprice"><%= rec[rec.length-1-i-3].productPrice %></li>
+                                        </ul>
+                                    </ul>
+                                <% }%>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    <% } %>
+                <%}%>
+                <%}else{%>
+                    <p id="reminder">&nbsp;</p>
+                    <p id="reminder">To &nbsp;get&nbsp; customized&nbsp; recommendation,&nbsp; please &nbsp;<a href="/users/login">LOGIN</a> &nbsp;first!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                    <p id="reminder">&nbsp;</p><p id="reminder">&nbsp;</p><p id="reminder">&nbsp;</p>
+                <%}%>
+            </div>
+            <% } %>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

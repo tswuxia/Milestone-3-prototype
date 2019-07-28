@@ -1,0 +1,114 @@
+body{
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #000000;
+    background: #e9e9e9;
+    padding:5px 6%;
+    width: 88%; 
+}
+
+#wrapper{
+    width:1250px;
+}
+
+/*general hyperlink*/
+a{
+    text-decoration: none;
+    color: #009e96;
+    padding: 8px 20px;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+li{
+    padding: 5px 6px 0px 6px;
+    display: inline;
+    margin: 10px 10px;
+}
+
+
+#topNav{
+    list-style-type: none;
+    float: right;
+    margin:30px 0px;
+}
+#topNav a{
+    background:none;
+}
+#topNav a:hover{
+    text-decoration: underline;
+}
+#topNav li{
+    margin:0px;
+}
+
+/*website title(logo)*/
+#header{
+    width: 400px;
+    height: 80px;
+    margin: 10px 0px;
+}
+
+#logintitle{
+    font-size: 35px;
+    font-family: 'Times New Roman', Times, serif;
+    color:#009e96;
+    margin-top:50px;
+    padding: 0px;
+    margin-left: 320px;
+}
+
+#information{
+    margin-top: 0px;
+    margin-left: 320px;
+    padding: 10px 30px 20px 85px;
+    width: 540px;
+    height: 350px;
+    border:3px solid #009e96; 
+    background:transparent; 
+    border-radius: 15px;
+}
+.default{
+    margin:65px 0px;
+    font-size: 26px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #4b4b4b;
+}
+.password{
+    margin:35px 0px ;
+    font-size: 26px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #4b4b4b;
+}
+.defaultinput{
+    margin: 0px 7px;
+    border-radius: 5px;
+    border: 1px solid #009e96;
+    height: 35px;
+    font-size:25px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 2px;
+}
+
+#submit{
+    float: right;
+    margin: 0px 20px 0px 0px;
+    color: white;
+    background: #009e96;
+    font-size: 26px;
+    padding: 2px 7px 4px 7px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#jump{
+    font-size:23px;
+    color: #009e96;
+}
+
+#warning{
+    font-size:15px;
+    color:#9b3737;
+}

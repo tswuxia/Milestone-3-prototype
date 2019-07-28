@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A-mazing</title>
+        <link rel="stylesheet" href="/stylesheets/contactUs.css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                <li><a href="/">Homepage</a></li>
+                <% if (isAuthenticated) { %>
+                <li><a href="/userAccount/personal_account"><%= username %></a></li>
+                <%} else {%>
+                <li><a href="/users/login">Log In</a></li>
+                <%}%>
+                <li><a href="/contactUs">Contact Us</a></li>
+                <% if (isAuthenticated) { %>
+                <li><a href="/users/logout">Log Out</a></li>
+                <% } %>
+            </ul>
+            <br>
+            <button id="search">Search</button><input id="searchBar">
+            <p id="title">Contact Us</p>
+            
+            <table id="contactInfo">
+                <tr><td><h3>Email</h3></td></tr>
+                <tr><td>xxxxx@amazing.com</td></tr>
+                <tr><td><h3>Hotline</h3></td></tr>
+                <tr><td>+65 99999999</td></tr>
+                <tr><td>+65 88888888</td></tr>
+            </table>
+        </div>
+    </body>
+</html>

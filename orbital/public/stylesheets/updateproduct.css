@@ -1,0 +1,138 @@
+body{
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #494949;
+    background: #e9e9e9;
+    padding:5px 6%;
+    width: 88%; 
+}
+a{
+    text-decoration: none;
+    color: #009e96;
+    padding: 8px 20px;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+li{
+    padding: 5px 6px 0px 6px;
+    display: inline;
+    margin: 10px 10px;
+}
+#topNav{
+    list-style-type: none;
+    float: right;
+    margin:30px 0px;
+}
+#topNav a{
+    background:none;
+}
+#topNav a:hover{
+    text-decoration: underline;
+}
+#topNav li{
+    margin:0px;
+}
+#header{
+    width: 400px;
+    height: 80px;
+    margin: 10px 0px;
+}
+#wrapper{
+    width:1250px;
+}
+#productinfo{
+    margin-top: 0px;
+    margin-left: 320px;
+    margin-bottom: 50px;
+    padding: 10px 55px 60px 50px;
+    width: 540px;
+    height: 0px auto;
+    border:3px solid #009e96; 
+    background:transparent; 
+    border-radius: 15px;
+}
+.default{
+    margin:35px 0px;
+    padding: 0px;
+    font-size: 26px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #494949;
+}
+.default img{
+    width: 250px;
+    height: 300px;
+}
+.defaultinput{
+    margin: 0px 7px;
+    border-radius: 5px;
+    border: 1px solid #009e96;
+    height: 35px;
+    font-size:25px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 2px;
+    color: #494949;
+}
+.uploadpic{
+    margin: 0px 7px;
+    border-radius: 5px;
+    border: 1px solid #009e96;
+    font-size:12px;
+}
+.textarea{
+    margin: 0px 7px;
+    border-radius: 5px;
+    border: 1px solid #009e96;
+    height: 105px;
+    width: 540px;
+    color: #494949;
+    font-size:25px;
+    padding: 5px;
+    font-family: 'Times New Roman', Times, serif;
+}
+#submit{
+    float: right;
+    margin: 0px;
+    color: white;
+    background: #009e96;
+    font-size: 26px;
+    padding: 2px 9px 4px 9px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+}
+h1{
+    font-size: 32px;
+    font-family: 'Times New Roman', Times, serif;
+    color:#009e96;
+    margin-top:50px;
+    padding: 0px;
+    margin-left: 320px;
+}
+p{
+    font-size: 20px;
+    margin:0px;
+}
+#inputForcash{
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #009e96;
+    padding: 3px;
+    margin-top: 10px;
+}
+#inputForexchange{
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #009e96;
+    padding: 3px;
+    margin-top: 10px;
+}
+.method{
+    margin-left: 20px;
+}
+#inputFormethod{
+    margin-left: 20px;
+}

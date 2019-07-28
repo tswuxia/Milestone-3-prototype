@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Log in</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                    <li><a href="/">Homepage</a></li>
+                    <li><a href="/users/login">Log In</a></li>
+                    <li><a href="/contactUs">Contact Us</a></li>
+            </ul>
+            <br>
+            <p id="logintitle">Log In</p>
+            <form method="post" id="information">
+                <p class="default">Username <input type=text class="defaultinput" name="username" placeholder="Your username" required></p>
+                <p class="password">Password <input type=password class="defaultinput" name="password" placeholder="Your password" required></p>
+                <%if(message){%>
+                    <p id="warning"><%= message%></p>
+                <%}%>
+                <p id="jump"><a href="/users/sign_up">Sign up here</a></p>
+                <button id="submit" type="submit">Submit</button>
+            </form>
+            
+
+        </div>
+    </body>
+</html>

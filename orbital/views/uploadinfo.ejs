@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Upload Product Information
+        </title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/uploadinfo.css">
+        <script type="text/javascript">
+            function dynInput(cbox, inputType) {
+             if (cbox.checked) {
+               var input = document.createElement("input");
+               input.type = "text";
+               input.name = "inputFor"+cbox.value;
+               input.id = "inputFor"+cbox.value;
+               var div = document.createElement("p");
+               div.id = "inputFor"+cbox.id;
+               div.innerHTML = inputType =="price" ? "Price " : "Exchange material ";
+               div.appendChild(input);
+               document.getElementById(inputType).appendChild(div);
+             } else {
+               document.getElementById("inputFor"+cbox.id).remove();
+             }
+           }
+           function check() {
+            var box1 = document.getElementById("cbox1");
+            var box2 = document.getElementById("cbox2");   
+            if (!(box1.checked || box2.checked)) {
+                   alert("Please choose at least one payment method.");
+                   location.replace('/userAccount/uploadinfo');
+               }
+           }
+           </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                <li><a href="/">Homepage</a></li>
+                <li><a href="/userAccount/personal_account"><%= username %></a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="/users/logout">Log Out</a></li>
+            </ul>
+            <h1>Your Material Information</h1>
+            <form id="productinfo" method="post" enctype="multipart/form-data">
+                <p class="default">Title:<input class="defaultinput" type="text" name="name" id="productname" placeholder="Please fill in the title" required/></p>
+                <p class="default">A picture of your material:<br/><input type="file" name="uploadfile" class="uploadpic" placeholder="please upload a picture"  required/></p>
+                <p class="default">Category:     
+                    <select class="defaultinput"name="cat" id="category">   
+                        <option value="psle">PSLE</option>   
+                        <option value="sec">Secondary School</option>   
+                        <option value="jc">GCE A'levels</option>   
+                        <option value="ib">IB</option>   
+                        <option value="uni">University</option>
+                        <option value="other">Others</option>
+                    </select>
+                </p>
+                <p class="default">Payment Method:<br>
+                    <p><input  type="checkbox" name="method" id="cbox1" class="method" value="cash" onclick="dynInput(this,'price');" />Cash</p>
+                    <p id="price"></p><br>
+                    <p><input type="checkbox" name="method" id="cbox2" class="method" value="exchange" onclick="dynInput(this,'exchange');" />Exchange</p>
+                    <p id="exchange"></p>
+                <p class="default">Material Description:<br/><textarea class="textarea" type="text" name="desc" class="product_desc" placeholder="Please describe your product" rows="4" columns="40"></textarea></p>
+                <button type="submit" id="submit" onclick="check()">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

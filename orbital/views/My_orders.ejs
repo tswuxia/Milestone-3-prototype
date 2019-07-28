@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A-mazing</title>
+        <link rel="stylesheet"  href="/stylesheets/my_orders.css">
+    </head>
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                <li><a href="/">Homepage</a></li>
+                <li><a href="/userAccount/personal_account"><%= username %></a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="/users/logout">Log Out</a></li>
+            </ul>
+            <br>
+            <button id="search">Search</button><input id="searchBar">
+            <%if(profile==null){%>
+                <img src="/images/usericon.png" id="profile">
+                <div id="info"><p id="name"><%=username%></p>
+                    
+                    <img src="/images/tele.png" id="tel">
+                    <span id="number">N.A.</span>
+                    <span id="edit"><a href="/userAccount/edit_profile">Edit Profile</a></span>
+                </div>
+                
+                <%}else{%>
+                    <img src="/images/upload_images/<%=profile.profilePic%>" id="profile">
+                    <div id="info"><p id="name"><%=username%></p> 
+                        <img src="/images/tele.png" id="tel">
+                        <span id="number"><% if (profile.profileNum) {%><%=profile.profileNum%><%} else {%>N.A.<%}%></span>
+                        <span id="edit"><a href="/userAccount/edit_profile">Edit Profile</a></span>
+                    </div>
+                <%}%>
+            <table id="personalNav"><tr>
+                <td><a href="/userAccount/personal_account">Favourites</a></td>
+                <td>My Orders</td>
+                <td><a href="/userAccount/manageShop">Manage My Shop</a></td>
+            </tr></table>
+            <table id="orders"><tr><td class="tables">
+                <table id="bought">
+                    <tr><th>Bought from</th></tr>
+                    <% for (i = 0; i < bought.length; i++) { %>
+                        <tr>
+                            <td class="seller"><p><%= bought[i].userName%></p><%=bought[i].userEmail%></td>
+                            <td><a href="/product_info?id=<%=bought[i].productID%>"><img src="/images/upload_images/<%= bought[i].picPath %>"></a></td>
+                            <td class="des"><a href="/product_info?id=<%=bought[i].productID%>"><%= bought[i].productName %></a></td>
+                            <td class="cat"><%= bought[i].category %></td>
+                            <td class="price"><% if (bought[i].productPrice) { %>
+                                S$<%= bought[i].productPrice %>
+                            <%} else {%>
+                                <%= bought[i].exchange %>
+                            <%}%></td>                            
+                        </tr>
+                    <% }%>        
+                </table></td>
+                <td class="tables"><table id="sold">
+                    <tr><th>Sold to</th></tr>                    
+                    <% for (i = 0; i < newSold.length; i++) { %>
+                        <tr class="new">
+                                <td class="buyer"><p><%= newSold[i].userName%></p><%=newSold[i].userEmail%></td>
+                                <td><a href="/product_info?id=<%=newSold[i].productID%>"><img src="/images/upload_images/<%= newSold[i].picPath %>"></a></td>
+                                <td class="des"><a href="/product_info?id=<%=newSold[i].productID%>"><%= newSold[i].productName %></a></td>
+                                <td class="cat"><%= newSold[i].category %></td>
+                                <td class="price"><% if (newSold[i].productPrice) { %>
+                                    S$<%= newSold[i].productPrice %>
+                                <%} else {%>
+                                    <%= newSold[i].exchange %>
+                                <%}%></td>
+                            </tr>
+                    <% }%>
+                    <% for (i = sold.length-1; i >=0; i--) { %>
+                        <tr>
+                            <td class="buyer"><p><%= sold[i].userName%></p><%=sold[i].userEmail%></td>
+                            <td><a href="/product_info?id=<%=sold[i].productID%>"><img src="/images/upload_images/<%= sold[i].picPath %>"></a></td>
+                            <td class="des"><a href="/product_info?id=<%=sold[i].productID%>"><%= sold[i].productName %></a></td>
+                            <td class="cat"><%= sold[i].category %></td>
+                            <td class="price"><% if (sold[i].productPrice) { %>
+                                S$<%= sold[i].productPrice %>
+                            <%} else {%>
+                                <%= sold[i].exchange %>
+                            <%}%></td>
+                        </tr>
+                    <% }%>        
+                </table></td>
+            </tr></table>
+        </div>
+    </body>
+</html>

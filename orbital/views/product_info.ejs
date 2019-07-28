@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product Information</title>
+        <link rel="stylesheet" href='/stylesheets/product_info.css'>
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <img id="header" src="images/header.png">
+            <ul id="topNav">
+                
+                <li><a href="/">Homepage</a></li>
+                <% if (isAuthenticated) { %>
+                <li><a href="/userAccount/personal_account"><%= username %></a></li>
+                <%} else {%>
+                <li><a href="/users/login">Log In</a></li>
+                <%}%>
+                <li><a href="/contactUs">Contact Us</a></li>
+                <% if (isAuthenticated) { %>
+                <li><a href="/users/logout">Log Out</a></li>
+                <% } %>
+            </ul>
+            <br>
+            <button id="search">Search</button><input id="searchBar">
+            <br>
+            <div id="infopage">
+                <table id="basicinfo"><tr>
+                    <td id="productimg"><img src="/images/upload_images/<%=product.picPath%>"></td>
+                    <td id="basicinfo_words">
+                        <ul>
+                            <li id="productname"><b><%= product.productName %></b></li>
+                            <% if (product.productPrice) { %>
+                                <li id="product_price">S$<%=product.productPrice%></li>
+                                <% if (product.exchange) {%>
+                                    <li id="exchange">OR Exchange material:<%= product.exchange %></li>
+                                <%}%>
+                            <%} else { %>
+                                <li id="exchange">Exchange material: <%= product.exchange%></li>
+                            <%}%>
+                            <li id="user_name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="usericon" src="images/usericon.png"><%= seller.userName %></li>
+                            <li id="rating">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.0</li>
+                            <li id="contact_number">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="phoneicon" src="images/emailicon.png"><%= seller.userEmail%></li>
+                            <li id="buttons">
+                                <ul>
+                                    <li><a href="/product_info/cart?id=<%=product.productID%>"><button id="button1">Add to Favourites</button></a></li>
+                                    <% if (isAuthenticated) { %>
+                                    <li><a href="/buyNow?id=<%=product.productID%>" onclick="if (confirm('An email will be sent to the seller. Are you sure you want to purchase?')) return alert('Your request has been emailed, please discuss details of your transaction with the seller through email or handphone.');"><button id="button2">Buy Now</button></a></li>
+                                    <% } else { %>
+                                    <li><a href="/users/login"><button id="button2.1">Buy Now</button></a></li>
+                                    <% } %>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td></tr>
+                </table>
+                <p id="description">
+                    <h3>Product Description</h3>
+                    <%=product.description%>
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript" src="javascripts/cart.js"></script>
+    </body>
+</html>

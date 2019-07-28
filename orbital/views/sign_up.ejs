@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/signup.css">
+    </head>
+
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                    <li><a href="/">Homepage</a></li>
+                    <li><a href="/users/login">Log In</a></li>
+                    <li><a href="/contactUs">Contact Us</a></li>
+            </ul>
+            <br>
+            <p id="logintitle">Sign Up</p>
+            <form method = "post" id="information">
+                <p id="default">Username&nbsp;&nbsp;<input type=text class="defaultinput" name="name" placeholder="Your username" required></p>
+                <p id="default">E-mail &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="email" class="defaultinput" name="email" placeholder="Your email" required></p>
+                <p id="password">Password &nbsp;&nbsp;<input type=password class="defaultinput" name="password" placeholder="Your password" required></p>
+                
+                <%if(warning){%>
+                    <p id="warning"><%= warning%></p>
+                <%}%>
+                <p id="jump"><a href="/users/login">Have an account? Log in here</a></p>
+                <button type="submit" id="submit">Submit</button>
+            </form>
+            
+
+        </div>
+    </body>
+</html>

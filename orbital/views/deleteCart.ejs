@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A-mazing</title>
+        <link rel='stylesheet' href='/stylesheets/deleteCart.css'>
+    </head>
+    <body>
+        <div id="wrapper">
+            <img id="header" src="/images/header.png">
+            <ul id="topNav">
+                <li><a href="/">Homepage</a></li>
+                <li><a href="/userAccount/personal_account"><%= username %></a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="/users/logout">Log Out</a></li>
+            </ul>
+            <br>
+            <button id="search">Search</button><input id="searchBar">
+            <%if(profile==null){%>
+                <img src="/images/usericon.png" id="profile">
+                <div id="info"><p id="name"><%=username%></p>
+                    
+                    <img src="/images/tele.png" id="tel">
+                    <span id="number">N.A.</span>
+                    <span id="edit"><a href="/userAccount/edit_profile">Edit Profile</a></span>
+                </div>
+                
+                <%}else{%>
+                    <img src="/images/upload_images/<%=profile.profilePic%>" id="profile">
+                    <div id="info"><p id="name"><%=username%></p> 
+                        <img src="/images/tele.png" id="tel">
+                        <span id="number"><% if (profile.profileNum) {%><%=profile.profileNum%><%} else {%>N.A.<%}%></span>
+                        <span id="edit"><a href="/userAccount/edit_profile">Edit Profile</a></span>
+                    </div>
+                <%}%>
+            <table id="personalNav"><tr>
+                <td>Favourites</td>
+                <td><a href="/userAccount/My_orders">My Orders</a></td>
+                <td><a href="/userAccount/manageShop">Manage My Shop</a></td>
+            </tr></table>
+            <form method="POST" enctype="multipart/form-data">
+                <table id="cart">
+                    <% for (i = 0; i < rows.length; i++) { %>
+                        <tr>
+                            <td><input type="checkbox" name="<%= rows[i].picPath %>"></td>
+                            <td><img src="/images/upload_images/<%= rows[i].picPath %>"></td>
+                            <td class="des"><%= rows[i].productName %></td>
+                            <td class="cat"><%= rows[i].category %></td>
+                            <td class="price">
+                            <% if (rows[i].productPrice) { %>
+                                S$<%= rows[i].productPrice %>
+                            <%} else {%>
+                                <%= rows[i].exchange %>
+                            <%}%></td></tr>
+                    <% }%>        
+                </table>
+                <button type="submit" id="delete" class="btn">Delete</button>
+            </form>
+            <a href="My orders.ejs"><button id="buy" class="btn">Buy now</button></a>
+        </div>
+    </body>
+</html>
